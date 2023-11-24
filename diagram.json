@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-servo", "id": "servo1", "top": 132.4, "left": 499.2, "attrs": {} },
+    { "type": "wokwi-servo", "id": "servo2", "top": 7.6, "left": 499.2, "attrs": {} },
+    { "type": "wokwi-servo", "id": "servo3", "top": -107.6, "left": 499.2, "attrs": {} },
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp1", "top": -72.1, "left": 263.8, "attrs": {} },
+    {
+      "type": "wokwi-lcd2004",
+      "id": "lcd1",
+      "top": -281.6,
+      "left": 216.8,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -70.8,
+      "left": 205.4,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -70.8,
+      "left": 157.4,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 4.8,
+      "left": 201.05,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 4.8,
+      "left": 153.05,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "servo3:GND", "esp1:GND.1", "black", [ "h-105.6", "v144" ] ],
+    [ "servo2:GND", "esp1:GND.1", "black", [ "h-96", "v28.8" ] ],
+    [ "servo1:GND", "esp1:GND.1", "black", [ "h-96", "v-67.2" ] ],
+    [ "servo3:V+", "esp1:3V3", "green", [ "h-124.8", "v134.5" ] ],
+    [ "servo2:V+", "esp1:3V3", "green", [ "h-115.2", "v19.3" ] ],
+    [ "servo1:V+", "esp1:3V3", "green", [ "h-115.2", "v-67.1" ] ],
+    [ "servo1:PWM", "esp1:D15", "white", [ "h-105.6", "v-95.8" ] ],
+    [ "servo2:PWM", "esp1:D2", "white", [ "h-115.2", "v-19" ] ],
+    [ "servo3:PWM", "esp1:D4", "white", [ "h-115.2", "v86.6" ] ],
+    [ "esp1:GND.1", "lcd1:GND", "black", [ "h-249.9", "v-374.5" ] ],
+    [ "esp1:VIN", "lcd1:VCC", "red", [ "h-134.4", "v-364.8" ] ],
+    [ "esp1:D22", "lcd1:SCL", "cyan", [ "h28.5", "v-48.3", "h-211.2", "v-134.4", "h38.4" ] ],
+    [ "lcd1:SDA", "esp1:D21", "magenta", [ "h-76.8", "v153.8", "h278.4", "v76.8" ] ],
+    [ "led1:A", "r1:1", "gold", [ "v0" ] ],
+    [ "led2:A", "r2:1", "gold", [ "v0" ] ],
+    [ "led2:C", "esp1:GND.2", "black", [ "v105.6", "h0.4" ] ],
+    [ "led1:C", "esp1:GND.2", "black", [ "v105.6", "h0.4" ] ],
+    [ "r2:2", "esp1:D13", "gold", [ "h0", "v27.6" ] ],
+    [ "r1:2", "esp1:D12", "gold", [ "h0", "v18" ] ]
+  ],
+  "dependencies": {}
+}
